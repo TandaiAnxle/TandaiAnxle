@@ -1,5 +1,5 @@
 # 💫 About Me:
-I'm Bertus.<br>I would appreciate help with any Coding languages I know or am learning.<br><br>
+I'm Bertus.<br>I am a Developer from South Africa.<br><br>
 
 
 ## 🌐 Socials:
