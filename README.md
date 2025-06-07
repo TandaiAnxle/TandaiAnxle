@@ -11,7 +11,7 @@
 
 - 👯 I’m looking to collaborate on **Lights Out & fanmade games**
 
-- ⚡ Fun fact **I am 15.**
+- ⚡ Fun fact **I am 16.**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
