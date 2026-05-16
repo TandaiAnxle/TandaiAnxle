@@ -5,7 +5,7 @@
 
 
 
-- 🔭 I’m currently working on **Lights out💡**
+- 🔭 I’m currently working on **Improving my coding skills💡**
 
 - 🌱 I’m currently learning **JavaScript, NodeJS, React, PHP % more.**
 
