@@ -38,7 +38,7 @@
 
 <h3 align="left">Languages Used in My Projects:</h3>
 <p align="left">
-  <img src="./languages.svg" alt="Languages used in my public GitHub projects, shown as percentages" width="840" />
+  <img src="https://raw.githubusercontent.com/TandaiAnxle/TandaiAnxle/main/languages.svg?refresh=20261113-1532" alt="Languages used in my public GitHub projects, shown as percentages" width="840" />
 </p>
 
 <p>
