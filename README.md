@@ -7,9 +7,9 @@
 
 - 🔭 I’m currently working on **Improving my coding skills💡**
 
-- 🌱 I’m currently learning **JavaScript, NodeJS, React, PHP % more.**
+- 🌱 I’m currently learning **CS50!**
 
-- 👯 I’m looking to collaborate on **Lights Out & fanmade games**
+- 👯 I’m looking to collaborate on **Nothing.**
 
 - ⚡ Fun fact **I am 17.**
 
