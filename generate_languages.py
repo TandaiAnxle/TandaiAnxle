@@ -198,10 +198,88 @@ def generate_png_cards(totals, public_repos):
     stats.save(folder / "github_stats.png", format="PNG", optimize=True)
     print("Generated languages.png, top_languages.png, github_stats.png")
 
+
+def refresh_full_profile(totals, public_repos):
+    """Update the embedded language percentages and repository metrics."""
+    import re
+
+    path = Path(__file__).resolve().parent / "profile.svg"
+    content = path.read_text(encoding="utf-8")
+    items = sorted(totals.items(), key=lambda item: (-item[1], item[0]))
+    total = sum(totals.values())
+    # Keep the legend within the allotted space.
+    display = items[:9]
+    if len(items) > 9:
+        display = items[:8] + [("Other", sum(value for _, value in items[8:]))]
+
+    def xml_text(value):
+        return html.escape(str(value), quote=True)
+
+    def svg_text(x, y, value, size=16, color="#F0F6FC", weight=400):
+        return (
+            f'<text x="{x}" y="{y}" fill="{color}" '
+            f'font-family="Verdana,Arial,sans-serif" font-size="{size}" '
+            f'font-weight="{weight}">{xml_text(value)}</text>'
+        )
+
+    pieces = ['<g clip-path="url(#barclip)">']
+    position = 52.0
+    if total:
+        for index, (language, amount) in enumerate(display):
+            width = 908.0 - position if index == len(display) - 1 else 856.0 * amount / total
+            fill = "#484F58" if language == "Other" else color_for(language)
+            pieces.append(
+                f'<rect x="{position:.3f}" y="978" width="{width:.3f}" '
+                f'height="22" fill="{fill}"/>'
+            )
+            position += width
+    pieces.append("</g>")
+    if total:
+        for index, (language, amount) in enumerate(display):
+            x, y = 52 + index % 3 * 288, 1032 + index // 3 * 36
+            fill = "#484F58" if language == "Other" else color_for(language)
+            pieces.append(
+                f'<rect x="{x}" y="{y-12}" width="13" height="13" rx="3" fill="{fill}"/>'
+            )
+            pieces.append(svg_text(x+23, y, f"{language} {amount/total*100:.1f}%"))
+    else:
+        pieces.append(svg_text(52, 1032, "No public project code detected yet.", 14, "#8B949E"))
+
+    stats_data = [
+        ("PUBLIC PROJECTS", len(public_repos)),
+        ("STARS RECEIVED", sum(r.get("stargazers_count", 0) for r in public_repos)),
+        ("FORKS RECEIVED", sum(r.get("forks_count", 0) for r in public_repos)),
+        ("LANGUAGES USED", len(items)),
+    ]
+    stats = []
+    for index, (label, value) in enumerate(stats_data):
+        x = 52 + index * 217
+        stats.append(
+            f'<rect x="{x}" y="1165" width="204" height="106" '
+            'rx="12" fill="#161B22" stroke="#30363D"/>'
+        )
+        stats.append(svg_text(x+18, 1215, value, 34, "#F0F6FC", 700))
+        stats.append(svg_text(x+18, 1244, label, 11, "#8B949E", 700))
+
+    replacements = [
+        (r'<!-- GENERATED_LANGUAGE_START -->.*?<!-- GENERATED_LANGUAGE_END -->',
+         '<!-- GENERATED_LANGUAGE_START -->\n' + '\n'.join(pieces) + '\n<!-- GENERATED_LANGUAGE_END -->'),
+        (r'<!-- GENERATED_STATS_START -->.*?<!-- GENERATED_STATS_END -->',
+         '<!-- GENERATED_STATS_START -->\n' + '\n'.join(stats) + '\n<!-- GENERATED_STATS_END -->'),
+    ]
+    for pattern, replacement in replacements:
+        content, matches = re.subn(pattern, lambda _: replacement, content, count=1, flags=re.DOTALL)
+        if matches != 1:
+            raise RuntimeError(f"Profile SVG update marker missing: {pattern}")
+
+    path.write_text(content, encoding="utf-8")
+
+
 def main():
     totals, public_repos = fetch_language_totals()
     OUTPUT.write_text(generate_svg(totals), encoding="utf-8")
     generate_png_cards(totals, public_repos)
+    refresh_full_profile(totals, public_repos)
     print(f"Updated {OUTPUT} using {sum(totals.values())} bytes across {len(totals)} languages")
 
 
