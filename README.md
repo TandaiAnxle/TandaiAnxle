@@ -38,15 +38,13 @@
 
 <h3 align="left">Languages Used in My Projects:</h3>
 <p align="left">
-  <img src="https://raw.githubusercontent.com/TandaiAnxle/TandaiAnxle/main/languages.svg?refresh=20261113-1532" alt="Languages used in my public GitHub projects, shown as percentages" width="840" />
+  <img src="./languages.png" alt="Languages used in my public GitHub projects, shown as percentages" width="840" />
 </p>
 
-<p>
-  <img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=tandaianxle&show_icons=true&locale=en&layout=compact" alt="Most used languages" />
-</p>
-
-<p>&nbsp;
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=tandaianxle&show_icons=true&locale=en" alt="GitHub stats" />
+<h3 align="left">Most Used Languages and GitHub Stats:</h3>
+<p align="left">
+  <img src="./top_languages.png" alt="Most used programming languages across my public projects" width="420" />
+  <img src="./github_stats.png" alt="GitHub public repository statistics" width="420" />
 </p>
 
 <p>
