@@ -1,6 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="156" viewBox="0 0 840 156" role="img">
-  <rect x="0.5" y="0.5" width="839" height="155" rx="14" fill="#0D1117" stroke="#30363D" />
-  <text x="24" y="38" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="19" font-weight="bold">Languages in my projects</text>
-  <rect x="24" y="65" width="792" height="22" rx="6" fill="#21262D" />
-  <text x="24" y="122" fill="#8B949E" font-family="Arial, sans-serif" font-size="14">Run the "Update language bar" GitHub Action to calculate your percentages.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="157" viewBox="0 0 840 157" role="img" aria-labelledby="heading description">
+<title id="heading">Languages used in my projects</title>
+<desc id="description">Share of code by language across public, non-fork GitHub repositories, measured by bytes.</desc>
+<rect x="0.5" y="0.5" width="839" height="156" rx="14" fill="#0D1117" stroke="#30363D"/>
+<text x="24" y="35" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="19" font-weight="bold">Languages in my projects</text>
+<text x="24" y="57" fill="#8B949E" font-family="Arial, sans-serif" font-size="12">All public, original repositories · by code bytes</text>
+<rect x="24" y="73" width="792" height="22" rx="6" fill="#21262D"/>
+<defs><clipPath id="bar-clip"><rect x="24" y="73" width="792" height="22" rx="6"/></clipPath></defs><g clip-path="url(#bar-clip)">
+<rect x="24.000" y="73" width="437.502" height="22" fill="#E34F26"/>
+<rect x="461.502" y="73" width="354.498" height="22" fill="#F4C542"/>
+</g>
+<rect x="24" y="112" width="13" height="13" rx="3" fill="#E34F26"/>
+<text x="47" y="124" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="14">HTML</text>
+<text x="389" y="124" text-anchor="end" fill="#8B949E" font-family="Arial, sans-serif" font-size="14">55.2%</text>
+<rect x="434" y="112" width="13" height="13" rx="3" fill="#F4C542"/>
+<text x="457" y="124" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="14">Python</text>
+<text x="799" y="124" text-anchor="end" fill="#8B949E" font-family="Arial, sans-serif" font-size="14">44.8%</text>
 </svg>
