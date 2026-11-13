@@ -274,6 +274,25 @@ def refresh_full_profile(totals, public_repos):
 
     path.write_text(content, encoding="utf-8")
 
+    # GitHub's image proxy can cache old SVGs long after their content changes.
+    # Refresh the URL only when the SVG bytes change, preserving the README design.
+    readme_path = Path(__file__).resolve().parent / "README.md"
+    readme = readme_path.read_text(encoding="utf-8")
+    revision = hashlib.sha256(content.encode("utf-8")).hexdigest()[:12]
+    image_url = (
+        f"https://raw.githubusercontent.com/TandaiAnxle/TandaiAnxle/main/profile.svg?v={revision}"
+    )
+    updated_readme, count = re.subn(
+        r'src="(?:\./profile\.svg|https://raw\.githubusercontent\.com/TandaiAnxle/TandaiAnxle/main/profile\.svg(?:\?v=[^"]*)?)"',
+        f'src="{image_url}"',
+        readme,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError("README profile.svg image reference missing")
+    if updated_readme != readme:
+        readme_path.write_text(updated_readme, encoding="utf-8")
+
 
 def main():
     totals, public_repos = fetch_language_totals()
