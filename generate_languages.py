@@ -46,6 +46,7 @@ def api_get(url):
 
 def fetch_language_totals():
     totals = Counter()
+    public_repos = []
     page = 1
     while True:
         repos = api_get(
@@ -56,13 +57,14 @@ def fetch_language_totals():
         for repo in repos:
             if repo.get("fork") or repo.get("name", "").lower() == USERNAME.lower():
                 continue
+            public_repos.append(repo)
             # Language API returns a dictionary of code bytes by language.
             languages = api_get(repo["languages_url"])
             totals.update({lang: count for lang, count in languages.items() if count > 0})
         if len(repos) < 100:
             break
         page += 1
-    return totals
+    return totals, public_repos
 
 
 def color_for(language):
@@ -111,9 +113,95 @@ def generate_svg(totals):
     return '\n'.join(parts) + '\n'
 
 
+
+def generate_png_cards(totals, public_repos):
+    """Build local PNG cards so the README never depends on external stats hosts."""
+    from PIL import Image, ImageDraw, ImageFont
+
+    folder = Path(__file__).resolve().parent
+    colors = {
+        "background": "#0D1117",
+        "panel": "#161B22",
+        "border": "#30363D",
+        "text": "#E6EDF3",
+        "muted": "#8B949E",
+        "track": "#21262D",
+    }
+    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+
+    def font(size, bold=False):
+        path = font_path.replace("DejaVuSans.ttf", "DejaVuSans-Bold.ttf") if bold else font_path
+        try:
+            return ImageFont.truetype(path, size)
+        except OSError:
+            return ImageFont.load_default()
+
+    def canvas(width, height, heading, subtitle):
+        im = Image.new("RGB", (width, height), colors["background"])
+        draw = ImageDraw.Draw(im)
+        draw.rounded_rectangle((1, 1, width-2, height-2), radius=14, outline=colors["border"], width=2)
+        draw.text((24, 16), heading, font=font(19, True), fill=colors["text"])
+        draw.text((24, 46), subtitle, font=font(12), fill=colors["muted"])
+        return im, draw
+
+    entries = sorted(totals.items(), key=lambda item: (-item[1], item[0]))
+    total_bytes = sum(totals.values())
+
+    # Wide language percentage bar (mirrors the SVG, but displays more reliably).
+    num_rows = (len(entries) + 1) // 2
+    height = max(160, 124 + 33 * num_rows)
+    bar, draw = canvas(840, height, "Languages in my projects", "All public, original repositories · by code bytes")
+    draw.rounded_rectangle((24, 73, 816, 95), radius=6, fill=colors["track"])
+    if total_bytes:
+        x = 24
+        for index, (language, count) in enumerate(entries):
+            right = 816 if index == len(entries) - 1 else round(x + (792 * count / total_bytes))
+            draw.rectangle((x, 73, right, 95), fill=color_for(language))
+            x = right
+        for index, (language, count) in enumerate(entries):
+            column, row = index % 2, index // 2
+            x, y = 24 + column * 410, 112 + row * 33
+            draw.rounded_rectangle((x, y, x + 13, y + 13), radius=3, fill=color_for(language))
+            draw.text((x + 23, y - 3), language[:25], font=font(14), fill=colors["text"])
+            draw.text((x + 290, y - 3), f"{100 * count / total_bytes:.1f}%", font=font(14), fill=colors["muted"])
+    else:
+        draw.text((24, 111), "No public project code detected yet.", font=font(14), fill=colors["muted"])
+    bar.save(folder / "languages.png", format="PNG", optimize=True)
+
+    # Vertical list of the most-used languages.
+    top, draw = canvas(440, 316, "Most Used Languages", "Measured by bytes of code · public projects")
+    for index, (language, count) in enumerate(entries[:5]):
+        y = 82 + 45 * index
+        percentage = 100 * count / total_bytes
+        draw.text((24, y), language[:22], font=font(14), fill=colors["text"])
+        draw.text((357, y), f"{percentage:.1f}%", font=font(13), fill=colors["muted"])
+        draw.rounded_rectangle((24, y + 23, 415, y + 31), radius=4, fill=colors["track"])
+        width = max(2, round(391 * count / total_bytes))
+        draw.rounded_rectangle((24, y + 23, 24 + width, y + 31), radius=4, fill=color_for(language))
+    if not entries:
+        draw.text((24, 100), "No public languages found yet.", font=font(14), fill=colors["muted"])
+    top.save(folder / "top_languages.png", format="PNG", optimize=True)
+
+    # Public repo summary. Avoid unverifiable contribution/commit/streak claims.
+    stats, draw = canvas(440, 316, "GitHub Stats", "Public, original repositories")
+    metrics = [
+        ("Public projects", len(public_repos)),
+        ("Stars received", sum(repo.get("stargazers_count", 0) for repo in public_repos)),
+        ("Forks received", sum(repo.get("forks_count", 0) for repo in public_repos)),
+        ("Languages used", len(totals)),
+    ]
+    for index, (label, value) in enumerate(metrics):
+        x, y = 24 + (index % 2) * 202, 82 + (index // 2) * 104
+        draw.rounded_rectangle((x, y, x+188, y+88), radius=10, fill=colors["panel"], outline=colors["border"])
+        draw.text((x+15, y+12), str(value), font=font(29, True), fill="#58A6FF")
+        draw.text((x+15, y+56), label, font=font(12), fill=colors["muted"])
+    stats.save(folder / "github_stats.png", format="PNG", optimize=True)
+    print("Generated languages.png, top_languages.png, github_stats.png")
+
 def main():
-    totals = fetch_language_totals()
+    totals, public_repos = fetch_language_totals()
     OUTPUT.write_text(generate_svg(totals), encoding="utf-8")
+    generate_png_cards(totals, public_repos)
     print(f"Updated {OUTPUT} using {sum(totals.values())} bytes across {len(totals)} languages")
 
 
