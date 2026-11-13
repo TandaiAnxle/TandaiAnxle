@@ -24,7 +24,7 @@ jobs:
       - name: Generate language bar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/generate_languages.py
+        run: python generate_languages.py
 
       - name: Commit updated bar
         run: |
