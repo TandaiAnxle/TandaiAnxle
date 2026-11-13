@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add languages.svg languages.png top_languages.png github_stats.png
+          git add languages.svg languages.png top_languages.png github_stats.png profile.svg
           if ! git diff --cached --quiet; then
             git commit -m "Update language percentages"
             git push
