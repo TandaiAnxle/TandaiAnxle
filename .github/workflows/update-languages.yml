@@ -3,6 +3,11 @@ name: Update language bar
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - generate_languages.py
+      - .github/workflows/update-languages.yml
   schedule:
     - cron: '17 5 * * *'
 
@@ -21,6 +26,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install image renderer
+        run: python -m pip install --disable-pip-version-check Pillow
+
       - name: Generate language bar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,7 +38,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add languages.svg
+          git add languages.svg languages.png top_languages.png github_stats.png
           if ! git diff --cached --quiet; then
             git commit -m "Update language percentages"
             git push
