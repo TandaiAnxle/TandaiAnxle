@@ -24,12 +24,12 @@
 <rect x="52" y="978" width="856" height="22" rx="6" fill="#21262D"/>
 <!-- GENERATED_LANGUAGE_START -->
 <g clip-path="url(#barclip)">
-<rect x="52.000" y="978" width="472.855" height="22" fill="#6E7681"/>
-<rect x="524.855" y="978" width="383.145" height="22" fill="#E6EDF3"/>
+<rect x="52.000" y="978" width="472.855" height="22" fill="#E34F26"/>
+<rect x="524.855" y="978" width="383.145" height="22" fill="#F4C542"/>
 </g>
-<rect x="52" y="1020" width="13" height="13" rx="3" fill="#6E7681"/>
+<rect x="52" y="1020" width="13" height="13" rx="3" fill="#E34F26"/>
 <text x="75" y="1032" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="16" font-weight="400">HTML 55.2%</text>
-<rect x="340" y="1020" width="13" height="13" rx="3" fill="#E6EDF3"/>
+<rect x="340" y="1020" width="13" height="13" rx="3" fill="#F4C542"/>
 <text x="363" y="1032" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="16" font-weight="400">Python 44.8%</text>
 <!-- GENERATED_LANGUAGE_END -->
 <text x="52" y="1124" text-anchor="start" fill="#F0F6FC" font-size="24" font-family="Verdana,Arial,sans-serif" font-weight="700">GITHUB STATS</text>
