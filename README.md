@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./profile.svg" width="100%" alt="Bertus' animated monochrome developer profile: meteor night sky, About Me, languages and tools, public project language percentages, and GitHub statistics" />
+  <img src="https://raw.githubusercontent.com/TandaiAnxle/TandaiAnxle/main/profile.svg?v=31ae03e37f1a" width="100%" alt="Bertus' animated monochrome developer profile: meteor night sky, About Me, languages and tools, public project language percentages, and GitHub statistics" />
 </p>
 
 <!-- GitHub READMEs cannot set page-wide CSS background/text colors.
