@@ -14,7 +14,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 USERNAME = "tandaianxle"
-OUTPUT = Path(__file__).resolve().parents[1] / "languages.svg"
+OUTPUT = Path(__file__).resolve().parent / "languages.svg"
 
 COLORS = {
     "Python": "#F4C542",      # Golden yellow
