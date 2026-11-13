@@ -17,14 +17,14 @@ USERNAME = "tandaianxle"
 OUTPUT = Path(__file__).resolve().parent / "languages.svg"
 
 COLORS = {
-    "Python": "#F4C542",      # Golden yellow
-    "C": "#2F81F7",           # Blue
-    "JavaScript": "#F97316",  # Orange
-    "HTML": "#E34F26",        # Red
-    "CSS": "#8B5CF6",         # Purple
+    "Python": "#E6EDF3",
+    "C": "#B1BAC4",
+    "JavaScript": "#8B949E",
+    "HTML": "#6E7681",
+    "CSS": "#484F58",
 }
 FALLBACK_COLORS = (
-    "#22C55E", "#06B6D4", "#E879F9", "#FACC15", "#FB7185", "#14B8A6"
+    "#E6EDF3", "#B1BAC4", "#8B949E", "#6E7681", "#484F58"
 )
 
 
@@ -193,7 +193,7 @@ def generate_png_cards(totals, public_repos):
     for index, (label, value) in enumerate(metrics):
         x, y = 24 + (index % 2) * 202, 82 + (index // 2) * 104
         draw.rounded_rectangle((x, y, x+188, y+88), radius=10, fill=colors["panel"], outline=colors["border"])
-        draw.text((x+15, y+12), str(value), font=font(29, True), fill="#58A6FF")
+        draw.text((x+15, y+12), str(value), font=font(29, True), fill="#E6EDF3")
         draw.text((x+15, y+56), label, font=font(12), fill=colors["muted"])
     stats.save(folder / "github_stats.png", format="PNG", optimize=True)
     print("Generated languages.png, top_languages.png, github_stats.png")
