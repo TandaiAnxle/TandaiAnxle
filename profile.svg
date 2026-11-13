@@ -22,10 +22,32 @@
 <text x="52" y="928" text-anchor="start" fill="#F0F6FC" font-size="24" font-family="Verdana,Arial,sans-serif" font-weight="700">PROJECT LANGUAGES</text>
 <text x="52" y="953" text-anchor="start" fill="#8B949E" font-size="13" font-family="Verdana,Arial,sans-serif" font-weight="400">Public, original projects · based on bytes of code</text>
 <rect x="52" y="978" width="856" height="22" rx="6" fill="#21262D"/>
-<!-- GENERATED_LANGUAGE_START --><g clip-path="url(#barclip)"><rect x="52" y="978" width="472.5" height="22" fill="#6E7681"/><rect x="524.5" y="978" width="383.5" height="22" fill="#E6EDF3"/></g><rect x="52" y="1020" width="13" height="13" rx="3" fill="#6E7681"/><text x="75" y="1032" text-anchor="start" fill="#F0F6FC" font-size="16" font-family="Verdana,Arial,sans-serif" font-weight="400">HTML 55.2%</text><rect x="340" y="1020" width="13" height="13" rx="3" fill="#E6EDF3"/><text x="363" y="1032" text-anchor="start" fill="#F0F6FC" font-size="16" font-family="Verdana,Arial,sans-serif" font-weight="400">Python 44.8%</text><!-- GENERATED_LANGUAGE_END -->
+<!-- GENERATED_LANGUAGE_START -->
+<g clip-path="url(#barclip)">
+<rect x="52.000" y="978" width="472.855" height="22" fill="#6E7681"/>
+<rect x="524.855" y="978" width="383.145" height="22" fill="#E6EDF3"/>
+</g>
+<rect x="52" y="1020" width="13" height="13" rx="3" fill="#6E7681"/>
+<text x="75" y="1032" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="16" font-weight="400">HTML 55.2%</text>
+<rect x="340" y="1020" width="13" height="13" rx="3" fill="#E6EDF3"/>
+<text x="363" y="1032" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="16" font-weight="400">Python 44.8%</text>
+<!-- GENERATED_LANGUAGE_END -->
 <text x="52" y="1124" text-anchor="start" fill="#F0F6FC" font-size="24" font-family="Verdana,Arial,sans-serif" font-weight="700">GITHUB STATS</text>
 <line x1="52" y1="1142" x2="908" y2="1142" stroke="#30363D"/>
-<!-- GENERATED_STATS_START --><rect x="52" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/><text x="70" y="1215" text-anchor="start" fill="#F0F6FC" font-size="34" font-family="Verdana,Arial,sans-serif" font-weight="700">7</text><text x="70" y="1244" text-anchor="start" fill="#8B949E" font-size="11" font-family="Verdana,Arial,sans-serif" font-weight="700">PUBLIC PROJECTS</text><rect x="269" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/><text x="287" y="1215" text-anchor="start" fill="#F0F6FC" font-size="34" font-family="Verdana,Arial,sans-serif" font-weight="700">0</text><text x="287" y="1244" text-anchor="start" fill="#8B949E" font-size="11" font-family="Verdana,Arial,sans-serif" font-weight="700">STARS RECEIVED</text><rect x="486" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/><text x="504" y="1215" text-anchor="start" fill="#F0F6FC" font-size="34" font-family="Verdana,Arial,sans-serif" font-weight="700">0</text><text x="504" y="1244" text-anchor="start" fill="#8B949E" font-size="11" font-family="Verdana,Arial,sans-serif" font-weight="700">FORKS RECEIVED</text><rect x="703" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/><text x="721" y="1215" text-anchor="start" fill="#F0F6FC" font-size="34" font-family="Verdana,Arial,sans-serif" font-weight="700">2</text><text x="721" y="1244" text-anchor="start" fill="#8B949E" font-size="11" font-family="Verdana,Arial,sans-serif" font-weight="700">LANGUAGES USED</text><!-- GENERATED_STATS_END -->
+<!-- GENERATED_STATS_START -->
+<rect x="52" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/>
+<text x="70" y="1215" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="34" font-weight="700">6</text>
+<text x="70" y="1244" fill="#8B949E" font-family="Verdana,Arial,sans-serif" font-size="11" font-weight="700">PUBLIC PROJECTS</text>
+<rect x="269" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/>
+<text x="287" y="1215" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="34" font-weight="700">2</text>
+<text x="287" y="1244" fill="#8B949E" font-family="Verdana,Arial,sans-serif" font-size="11" font-weight="700">STARS RECEIVED</text>
+<rect x="486" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/>
+<text x="504" y="1215" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="34" font-weight="700">0</text>
+<text x="504" y="1244" fill="#8B949E" font-family="Verdana,Arial,sans-serif" font-size="11" font-weight="700">FORKS RECEIVED</text>
+<rect x="703" y="1165" width="204" height="106" rx="12" fill="#161B22" stroke="#30363D"/>
+<text x="721" y="1215" fill="#F0F6FC" font-family="Verdana,Arial,sans-serif" font-size="34" font-weight="700">2</text>
+<text x="721" y="1244" fill="#8B949E" font-family="Verdana,Arial,sans-serif" font-size="11" font-weight="700">LANGUAGES USED</text>
+<!-- GENERATED_STATS_END -->
 <text x="480" y="1310" text-anchor="middle" fill="#8B949E" font-size="13" font-family="Verdana,Arial,sans-serif" font-weight="400">built slowly · always learning</text>
 <rect x="1" y="1" width="958" height="1348" rx="16" fill="none" stroke="#30363D"/>
 </svg>
