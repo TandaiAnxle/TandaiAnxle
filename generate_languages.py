@@ -17,14 +17,14 @@ USERNAME = "tandaianxle"
 OUTPUT = Path(__file__).resolve().parent / "languages.svg"
 
 COLORS = {
-    "Python": "#E6EDF3",
-    "C": "#B1BAC4",
-    "JavaScript": "#8B949E",
-    "HTML": "#6E7681",
-    "CSS": "#484F58",
+    "Python": "#F4C542",      # Golden yellow
+    "C": "#2F81F7",           # Blue
+    "JavaScript": "#F97316",  # Orange
+    "HTML": "#E34F26",        # Coral-red
+    "CSS": "#8B5CF6",         # Purple
 }
 FALLBACK_COLORS = (
-    "#E6EDF3", "#B1BAC4", "#8B949E", "#6E7681", "#484F58"
+    "#22C55E", "#06B6D4", "#E879F9", "#FACC15", "#FB7185", "#14B8A6"
 )
 
 
